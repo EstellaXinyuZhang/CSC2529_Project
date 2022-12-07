@@ -15,4 +15,3 @@ For deblur & denoise:
 * ResUNet: resunet_deblur_denoise_pretrained.pkl
 * ResUNet with Perceptual Loss: resunet_per_deblur_denoise_pretrained.pkl
 
-# CSC2529_Project
