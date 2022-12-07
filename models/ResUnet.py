@@ -123,7 +123,11 @@ class DownBlock(nn.Module):
     def __init__(self,
                  in_channels,
                  out_channels,
-                 num_res):
+                 num_res,
+                 prep_conv=True,
+                 use_dropout=False,
+                 dropout_prob=0.1,
+                 norm=nn.BatchNorm2d):
         '''
         :param in_channels: Number of input channels
         :param out_channels: Number of output channels

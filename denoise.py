@@ -225,8 +225,8 @@ def test(model, sigma=0.1, name_prefix="", patch_size=32):
     return np.mean(psnrs)
 
 
-def load_pretrained(ckp_path, original):
-    if original:
+def load_pretrained(ckp_path, original_model):
+    if original_model:
         model = Unet(norm=None, upsampling_mode='bilinear').to(device)
     else:
         model = ResUnet(norm=None, upsampling_mode='bilinear').to(device)
@@ -236,6 +236,10 @@ def load_pretrained(ckp_path, original):
 
 
 if __name__ == "__main__":
-    model = train(original_model=False, epochs=10, batch_size=64, patch_size=32, joint_loss=True)
-    psnr = evaluate_model(model, patch_size=32)
+    # train the model
+    model = train(original_model=False, epochs=15, batch_size=64, patch_size=32, joint_loss=True, sigma=0.1)
+    psnr = evaluate_model(model, patch_size=32, sigma=0.1)
     print(psnr)
+
+    # load the pretained model
+    # model = load_pretrained(ckp_path="pretrained_models/resunet_res2_denoise_pretrained.pkl", original_model=False)
